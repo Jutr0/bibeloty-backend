@@ -1,0 +1,62 @@
+require:
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.2
+  Exclude:
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+  Max: 25
+
+Metrics/MethodLength:
+  Max: 15
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Performance/CollectionLiteralInLoop:
+  Enabled: true
+
+Performance/FixedSize:
+  Enabled: true
+
+Performance/Detect:
+  Enabled: true
+
+Performance/RedundantBlockCall:
+  Enabled: true
+
+Performance/ReverseEach:
+  Enabled: true
+
+Performance/Sum:
+  Enabled: true
+
+Style/IndentationConsistency:
+  EnforcedStyle: rails
+
+Style/NumericLiteralPrefix:
+  EnforcedStyle: decimal
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+  EnforcedStyleForSingleline: no_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+  EnforcedStyleForSingleline: no_comma

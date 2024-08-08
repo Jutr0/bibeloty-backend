@@ -1,0 +1,19 @@
+\default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: gupek
+  password: gupek
+  host:  localhost
+
+development:
+  <<: *default
+  database: bibeloty_development
+
+test:
+  <<: *default
+  database: bibeloty_test<%= ENV['TEST_ENV_NUMBER'] %>
+
+production:
+  <<: *default
+  database: bibeloty_production
