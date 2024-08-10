@@ -10,10 +10,12 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.create!(category_params)
+    render :show
   end
 
   def update
     @category.update!(category_params)
+    render :show
   end
 
   def destroy
