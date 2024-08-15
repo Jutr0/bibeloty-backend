@@ -16,6 +16,7 @@ gem "database_cleaner"
 gem 'cancancan'
 gem 'rubocop', require: false
 gem 'rubocop-performance'
+gem 'annotate'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
