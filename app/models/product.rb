@@ -2,7 +2,7 @@
 #
 # Table name: products
 #
-#  id          :bigint           not null, primary key
+#  id          :uuid             not null, primary key
 #  name        :string           not null
 #  description :string           not null
 #  price       :string           not null
@@ -12,4 +12,6 @@
 #
 class Product < ApplicationRecord
   belongs_to :category
+  has_many :product_materials
+  has_many :materials, through: :product_materials
 end

@@ -9,33 +9,30 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-
-    if @product.save
-      render :show, status: :created, location: @product
-    else
-      render json: @product.errors, status: :unprocessable_entity
-    end
+    @product = Product.create!(product_params)
+    render :show, status: :created
   end
 
   def update
-    if @product.update(product_params)
-      render :show, status: :ok, location: @product
-    else
-      render json: @product.errors, status: :unprocessable_entity
-    end
+    @product.update!(product_params)
+    render :show, status: :ok
   end
 
   def destroy
     @product.destroy!
   end
 
-  private
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  def search_categories
+    @categories = Category.where('name ILIKE :q', q: "%#{params[:q]}%").limit(10)
+  end
 
-    def product_params
-      params.require(:product).permit(:name, :description, :price, :category_id)
-    end
+  private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :description, :price, :category_id, materials_ids:[:id])
+  end
 end
