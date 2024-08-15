@@ -26,6 +26,10 @@ class ProductsController < ApplicationController
     @categories = Category.where('name ILIKE :q', q: "%#{params[:q]}%").limit(10)
   end
 
+  def search_materials
+    @materials = Material.where('name ILIKE :q', q: "%#{params[:q]}%").limit(10)
+  end
+
   private
 
   def set_product
@@ -33,6 +37,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :category_id, materials_ids:[:id])
+    params.require(:product).permit(:name, :description, :price, :category_id, material_ids: [])
   end
 end
