@@ -1,17 +1,11 @@
 # == Schema Information
 #
-# Table name: materials
+# Table name: documents
 #
 #  id         :uuid             not null, primary key
-#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-one:
-  id: 
-  name: MyString
-
-two:
-  id: 
-  name: MyString
+class Document < ApplicationRecord
+  has_one_attached :file
+end
