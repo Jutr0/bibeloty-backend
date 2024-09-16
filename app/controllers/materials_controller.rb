@@ -5,12 +5,12 @@ class MaterialsController < ApplicationController
   end
 
   def create
-    @material = Material.create!(material_params)
+    @material = Material.create!(document_params)
     render :show
   end
 
   def update
-    @material.update!(material_params)
+    @material.update!(document_params)
     render :show
   end
 
@@ -24,7 +24,7 @@ class MaterialsController < ApplicationController
     @material = Material.find(params[:id])
   end
 
-  def material_params
+  def document_params
     params.require(:material).permit(:name)
   end
 end

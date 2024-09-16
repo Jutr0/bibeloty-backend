@@ -10,10 +10,12 @@ module ECommerce
   class Application < Rails::Application
     config.load_defaults 7.0
 
-    config.frontend_url = ENV.fetch('FRONTEND_URL', 'http://localhost:3000')
+    config.frontend_url = ENV.fetch('APP_URL', 'http://localhost:3000')
+    config.backend_url = ENV.fetch("APP_URL", 'http://localhost:4000')
+
+    Rails.application.routes.default_url_options[:host] = config.backend_url
 
     config.generators { |g| g.orm :active_record, primary_key_type: :uuid }
-
     config.api_only = true
   end
 end
