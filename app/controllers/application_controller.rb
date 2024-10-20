@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ApplicationBasicController
   before_action :set_default_format
 
   private

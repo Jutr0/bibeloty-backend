@@ -1,5 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :set_material, only: [:update, :destroy]
+
   def index
     @materials = Material.all
   end
@@ -15,6 +16,12 @@ class MaterialsController < ApplicationController
   end
 
   def destroy
+
+    if @material.products.exists?
+      @material.errors.add(:base, "Used in product")
+      raise ActiveRecord::RecordInvalid.new(@material)
+    end
+
     @material.destroy!
   end
 

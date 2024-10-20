@@ -19,15 +19,20 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
+    if @category.products.exists?
+      @category.errors.add(:base, "Used in product")
+      raise ActiveRecord::RecordInvalid.new(@category)
+    end
+    @category.destroy!
   end
 
   private
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end

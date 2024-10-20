@@ -2,8 +2,8 @@
   adapter: postgresql
   encoding: utf8
   pool: 5
-  username: gupek
-  password: gupek
+  username: postgres
+  password: postgres
   host:  localhost
 
 development:
