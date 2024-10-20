@@ -17,6 +17,8 @@ gem 'cancancan'
 gem 'rubocop', require: false
 gem 'rubocop-performance'
 gem 'annotate'
+gem 'devise'
+gem 'devise-jwt'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -34,6 +36,3 @@ group :development do
   gem "spring"
   gem 'spring-watcher-listen', '2.1.0'
 end
-
-
-gem "devise", "~> 4.9"

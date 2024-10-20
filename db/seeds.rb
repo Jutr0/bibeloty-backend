@@ -1,0 +1,1 @@
+User.create!(login: Rails.configuration.admin_login, password: Rails.configuration.admin_password)
