@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: %i[ show update destroy ]
 

@@ -1,4 +1,4 @@
-json.partial! "products/product", product: @product
+json.partial! "admin/products/product", product: @product
 json.extract! @product, :description, :price
 json.category do
   json.extract! @product.category, :id, :name

@@ -1,4 +1,4 @@
-class DocumentsController < ApplicationController
+class Admin::DocumentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
