@@ -21,4 +21,8 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_materials
   accepts_nested_attributes_for :product_documents, allow_destroy: true
 
+  def main_image
+    self.product_documents.reorder(:position).first
+  end
+
 end
