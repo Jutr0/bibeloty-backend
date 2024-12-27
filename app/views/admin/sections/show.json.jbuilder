@@ -1,0 +1,1 @@
+json.partial! "admin/sections/section", section: @section

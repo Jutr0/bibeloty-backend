@@ -1,18 +1,18 @@
 class Admin::MaterialsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_material, only: [:update, :destroy]
+  before_action :set_section, only: [:update, :destroy]
 
   def index
     @materials = Material.all
   end
 
   def create
-    @material = Material.create!(document_params)
+    @material = Material.create!(material_params)
     render :show
   end
 
   def update
-    @material.update!(document_params)
+    @material.update!(material_params)
     render :show
   end
 
@@ -32,7 +32,7 @@ class Admin::MaterialsController < ApplicationController
     @material = Material.find(params[:id])
   end
 
-  def document_params
+  def material_params
     params.require(:material).permit(:name)
   end
 end

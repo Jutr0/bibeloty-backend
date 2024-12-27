@@ -5,15 +5,18 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :categories
       resources :materials
+      resources :sections
       resources :documents, only: :create
       resources :products do
         collection do
           get :search_categories
           get :search_materials
+          get :search_sections
         end
       end
     end
 
-    get '/home', to: 'home#index'
+    resources :products, only: :index
+    resources :sections, only: :index
   end
 end

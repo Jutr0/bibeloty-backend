@@ -1,0 +1,1 @@
+json.array! @sections, partial: 'admin/sections/section', as: :section

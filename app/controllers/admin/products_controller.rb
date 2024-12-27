@@ -31,6 +31,10 @@ class Admin::ProductsController < ApplicationController
     @materials = Material.where('name ILIKE :q', q: "%#{params[:q]}%").limit(10)
   end
 
+  def search_sections
+    @sections = Section.where('name ILIKE :q', q: "%#{params[:q]}%").limit(10)
+  end
+
   private
 
   def set_product
@@ -38,6 +42,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :category_id, material_ids: [], product_documents_attributes: [:id, :position, :document_id, :_destroy])
+    params.require(:product).permit(:name, :description, :price, :category_id, :section_id, material_ids: [], product_documents_attributes: [:id, :position, :document_id, :_destroy])
   end
 end

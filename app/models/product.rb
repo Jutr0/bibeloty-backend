@@ -9,9 +9,11 @@
 #  category_id :uuid             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  section_id  :uuid             not null
 #
 class Product < ApplicationRecord
   belongs_to :category
+  belongs_to :section
   has_many :product_materials, dependent: :destroy
   has_many :materials, through: :product_materials
   has_many :product_documents, dependent: :destroy
