@@ -14,6 +14,7 @@
 class Product < ApplicationRecord
   belongs_to :category
   belongs_to :section
+  has_many :product_sizes, dependent: :destroy
   has_many :product_materials, dependent: :destroy
   has_many :materials, through: :product_materials
   has_many :product_documents, dependent: :destroy
@@ -22,6 +23,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :materials
   accepts_nested_attributes_for :product_materials
   accepts_nested_attributes_for :product_documents, allow_destroy: true
+  accepts_nested_attributes_for :product_sizes, allow_destroy: true
 
   def main_image
     self.product_documents.reorder(:position).first

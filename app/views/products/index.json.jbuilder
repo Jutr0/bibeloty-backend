@@ -2,7 +2,7 @@ json.array! @products_sections do |section, products|
   json.extract! section, :name
 
   json.products products do |product|
-    json.extract! product, :price, :name
+    json.extract! product, :id, :price, :name
 
     if product.main_image.present?
       json.main_image do

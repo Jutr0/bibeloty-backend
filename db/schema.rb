@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_27_183951) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_28_124531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_27_183951) do
     t.index ["product_id"], name: "index_product_materials_on_product_id"
   end
 
+  create_table "product_sizes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "product_id", null: false
+    t.string "size", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_sizes_on_product_id"
+  end
+
   create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -119,6 +127,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_27_183951) do
   add_foreign_key "product_documents", "products"
   add_foreign_key "product_materials", "materials"
   add_foreign_key "product_materials", "products"
+  add_foreign_key "product_sizes", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "sections"
 end

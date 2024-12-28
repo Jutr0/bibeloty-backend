@@ -12,4 +12,6 @@
 class ProductDocument < ApplicationRecord
   belongs_to :document
   belongs_to :product
+
+  default_scope { order(position: :asc) }
 end

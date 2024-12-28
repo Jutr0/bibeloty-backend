@@ -1,6 +1,6 @@
 class Admin::MaterialsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_section, only: [:update, :destroy]
+  before_action :set_material, only: [:update, :destroy]
 
   def index
     @materials = Material.all
